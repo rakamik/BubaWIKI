@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buba Wiki</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 </head>
 <body>
     <div class="parchment">
@@ -24,6 +25,199 @@
             
             <div id="pageContent">
                 <h2 id="pageTitle">Welcome to Buba Wiki</h2>
+            <div class="page-layout">
+                <div id="infobox" class="infobox" style="display: none;">
+                    <div class="infobox-editor">
+                        <select id="infoboxTypeSelect" onchange="changeInfoboxType()" class="medieval-select">
+                            <option value="character">Character</option>
+                            <option value="location">Location</option>
+                            <option value="item">Item</option>
+                            <option value="event">Event</option>
+                            <option value="creature">Creature</option>
+                            <option value="region">Region</option>
+                            <option value="nation">Nation</option>
+                            <option value="dominion">Dominion</option>
+                        </select>
+                        <div class="infobox-image">
+                            <img id="infoboxImage" src="" alt="Page Image">
+                            <button onclick="changeInfoboxImage()" class="medieval-button small">Change Image</button>
+                        </div>
+                        <div id="infoboxFields" class="infobox-content">
+                            <!-- Character Fields -->
+                            <div class="infobox-type character">
+                                <div class="infobox-field">
+                                    <label>Name:</label>
+                                    <input type="text" class="medieval-input" id="characterName">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Title:</label>
+                                    <input type="text" class="medieval-input" id="characterTitle">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Race:</label>
+                                    <input type="text" class="medieval-input" id="characterRace">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Class:</label>
+                                    <input type="text" class="medieval-input" id="characterClass">
+                                </div>
+                            </div>
+                            <!-- Location Fields -->
+                            <div class="infobox-type location" style="display: none;">
+                                <div class="infobox-field">
+                                    <label>Name:</label>
+                                    <input type="text" class="medieval-input" id="locationName">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Type:</label>
+                                    <input type="text" class="medieval-input" id="locationType">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Region:</label>
+                                    <input type="text" class="medieval-input" id="locationRegion">
+                                </div>
+                            </div>
+                            <!-- Item Fields -->
+                            <div class="infobox-type item" style="display: none;">
+                                <div class="infobox-field">
+                                    <label>Name:</label>
+                                    <input type="text" class="medieval-input" id="itemName">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Type:</label>
+                                    <input type="text" class="medieval-input" id="itemType">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Rarity:</label>
+                                    <select class="medieval-select" id="itemRarity">
+                                        <option value="common">Common</option>
+                                        <option value="uncommon">Uncommon</option>
+                                        <option value="rare">Rare</option>
+                                        <option value="legendary">Legendary</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Region Fields -->
+                            <div class="infobox-type region" style="display: none;">
+                                <div class="infobox-field">
+                                    <label>Region Name:</label>
+                                    <input type="text" class="medieval-input" id="regionName">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Climate:</label>
+                                    <select class="medieval-select" id="regionClimate">
+                                        <option value="temperate">Temperate</option>
+                                        <option value="tropical">Tropical</option>
+                                        <option value="arctic">Arctic</option>
+                                        <option value="desert">Desert</option>
+                                        <option value="mountain">Mountain</option>
+                                    </select>
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Terrain:</label>
+                                    <input type="text" class="medieval-input" id="regionTerrain">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Notable Features:</label>
+                                    <input type="text" class="medieval-input" id="regionFeatures">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Controlling Nation:</label>
+                                    <input type="text" class="medieval-input" id="regionNation">
+                                </div>
+                            </div>
+                            <!-- Nation Fields -->
+                            <div class="infobox-type nation" style="display: none;">
+                                <div class="infobox-field">
+                                    <label>Nation Name:</label>
+                                    <input type="text" class="medieval-input" id="nationName">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Capital:</label>
+                                    <input type="text" class="medieval-input" id="nationCapital">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Government:</label>
+                                    <select class="medieval-select" id="nationGovernment">
+                                        <option value="monarchy">Monarchy</option>
+                                        <option value="empire">Empire</option>
+                                        <option value="republic">Republic</option>
+                                        <option value="oligarchy">Oligarchy</option>
+                                        <option value="theocracy">Theocracy</option>
+                                    </select>
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Ruler:</label>
+                                    <input type="text" class="medieval-input" id="nationRuler">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Major Cities:</label>
+                                    <input type="text" class="medieval-input" id="nationCities">
+                                </div>
+                            </div>
+                            <!-- Dominion Fields -->
+                            <div class="infobox-type dominion" style="display: none;">
+                                <div class="infobox-field">
+                                    <label>Dominion Name:</label>
+                                    <input type="text" class="medieval-input" id="dominionName">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Territory Size:</label>
+                                    <select class="medieval-select" id="dominionSize">
+                                        <option value="small">Small Territory</option>
+                                        <option value="medium">Medium Territory</option>
+                                        <option value="large">Large Territory</option>
+                                        <option value="vast">Vast Empire</option>
+                                    </select>
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Population:</label>
+                                    <select class="medieval-select" id="dominionPopulation">
+                                        <option value="sparse">Sparse</option>
+                                        <option value="moderate">Moderate</option>
+                                        <option value="dense">Dense</option>
+                                        <option value="overcrowded">Overcrowded</option>
+                                    </select>
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Military Strength:</label>
+                                    <select class="medieval-select" id="dominionMilitary">
+                                        <option value="weak">Weak Forces</option>
+                                        <option value="standard">Standard Army</option>
+                                        <option value="strong">Strong Military</option>
+                                        <option value="elite">Elite Forces</option>
+                                    </select>
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Resources:</label>
+                                    <input type="text" class="medieval-input" id="dominionResources" placeholder="Major resources and trade goods">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Alliances:</label>
+                                    <input type="text" class="medieval-input" id="dominionAlliances" placeholder="Major allies and trade partners">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Rivals:</label>
+                                    <input type="text" class="medieval-input" id="dominionRivals" placeholder="Major rivals and enemies">
+                                </div>
+                                <div class="infobox-field">
+                                    <label>Political System:</label>
+                                    <select class="medieval-select" id="dominionPolitics">
+                                        <option value="feudal">Feudal System</option>
+                                        <option value="imperial">Imperial Rule</option>
+                                        <option value="council">Council of Lords</option>
+                                        <option value="merchant">Merchant Republic</option>
+                                        <option value="tribal">Tribal Federation</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="infobox-field">
+                            <label>Description:</label>
+                            <textarea class="medieval-textarea" id="infoboxDescription" rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
                 <div id="contentArea">
                     <p>Welcome, brave adventurer, to our magical repository of knowledge! Here you shall find tales of wonder, ancient lore, and mystical secrets.</p>
                     <p>Choose your path:</p>
@@ -33,7 +227,16 @@
                         <li>Share your own legends</li>
                     </ul>
                 </div>
-                <button onclick="toggleEdit()" class="medieval-button" id="editButton">Edit This Page</button>
+            </div>
+            <div id="editorControls" style="display: none;" class="editor-controls">
+                <button onclick="formatText('bold')" class="editor-button"><strong>B</strong></button>
+                <button onclick="formatText('italic')" class="editor-button"><em>I</em></button>
+                <button onclick="formatText('underline')" class="editor-button"><u>U</u></button>
+                <button onclick="formatList('bullet')" class="editor-button">• List</button>
+                <button onclick="formatList('number')" class="editor-button">1. List</button>
+                <button onclick="toggleInfobox()" class="editor-button">Toggle Infobox</button>
+            </div>
+            <button onclick="toggleEdit()" class="medieval-button" id="editButton">Edit This Page</button>
             </div>
         </main>
     </div>
