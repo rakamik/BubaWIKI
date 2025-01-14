@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buba Wiki</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="parchment">
+        <header>
+            <h1 class="medieval-title">Buba Wiki</h1>
+            <nav>
+                <button onclick="createNewPage()" class="medieval-button">Create New Page</button>
+                <button onclick="showAllPages()" class="medieval-button">Show All Pages</button>
+            </nav>
+        </header>
+        
+        <main id="mainContent">
+            <div id="pageList" style="display: none;">
+                <h2>Wiki Pages</h2>
+                <ul id="wikiPages"></ul>
+            </div>
+            
+            <div id="pageContent">
+                <h2 id="pageTitle">Welcome to Buba Wiki</h2>
+                <div id="contentArea">
+                    <p>Welcome, brave adventurer, to our magical repository of knowledge! Here you shall find tales of wonder, ancient lore, and mystical secrets.</p>
+                    <p>Choose your path:</p>
+                    <ul>
+                        <li>Create a new chronicle</li>
+                        <li>Explore existing tales</li>
+                        <li>Share your own legends</li>
+                    </ul>
+                </div>
+                <button onclick="toggleEdit()" class="medieval-button" id="editButton">Edit This Page</button>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
