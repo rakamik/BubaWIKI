@@ -14,6 +14,8 @@
             <nav>
                 <button onclick="createNewPage()" class="medieval-button">Create New Page</button>
                 <button onclick="showAllPages()" class="medieval-button">Show All Pages</button>
+                <button onclick="savePageAs()" class="medieval-button">Save As...</button>
+                <button onclick="deletePage()" class="medieval-button danger">Delete Page</button>
             </nav>
         </header>
         
@@ -50,7 +52,7 @@
                                     <input type="text" class="medieval-input" id="characterName">
                                 </div>
                                 <div class="infobox-field">
-                                    <label>Title:</label>
+                                    <label>Nation:</label>
                                     <input type="text" class="medieval-input" id="characterTitle">
                                 </div>
                                 <div class="infobox-field">
@@ -133,21 +135,7 @@
                                     <input type="text" class="medieval-input" id="nationName">
                                 </div>
                                 <div class="infobox-field">
-                                    <label>Capital:</label>
-                                    <input type="text" class="medieval-input" id="nationCapital">
-                                </div>
-                                <div class="infobox-field">
-                                    <label>Government:</label>
-                                    <select class="medieval-select" id="nationGovernment">
-                                        <option value="monarchy">Monarchy</option>
-                                        <option value="empire">Empire</option>
-                                        <option value="republic">Republic</option>
-                                        <option value="oligarchy">Oligarchy</option>
-                                        <option value="theocracy">Theocracy</option>
-                                    </select>
-                                </div>
-                                <div class="infobox-field">
-                                    <label>Ruler:</label>
+                                    <label>Notable Characters:</label>
                                     <input type="text" class="medieval-input" id="nationRuler">
                                 </div>
                                 <div class="infobox-field">
@@ -157,6 +145,10 @@
                             </div>
                             <!-- Dominion Fields -->
                             <div class="infobox-type dominion" style="display: none;">
+                                <div class="infobox-field">
+                                    <label>Empire:</label>
+                                    <input type="text" class="medieval-input" id="Nation">
+                                </div>
                                 <div class="infobox-field">
                                     <label>Dominion Name:</label>
                                     <input type="text" class="medieval-input" id="dominionName">
@@ -172,21 +164,11 @@
                                 </div>
                                 <div class="infobox-field">
                                     <label>Population:</label>
-                                    <select class="medieval-select" id="dominionPopulation">
-                                        <option value="sparse">Sparse</option>
-                                        <option value="moderate">Moderate</option>
-                                        <option value="dense">Dense</option>
-                                        <option value="overcrowded">Overcrowded</option>
-                                    </select>
+                                    <input type="text" class="medieval-input" id="dompop">
                                 </div>
                                 <div class="infobox-field">
                                     <label>Military Strength:</label>
-                                    <select class="medieval-select" id="dominionMilitary">
-                                        <option value="weak">Weak Forces</option>
-                                        <option value="standard">Standard Army</option>
-                                        <option value="strong">Strong Military</option>
-                                        <option value="elite">Elite Forces</option>
-                                    </select>
+                                    <input type="text" class="medieval-input" id="dommil">
                                 </div>
                                 <div class="infobox-field">
                                     <label>Resources:</label>
@@ -229,12 +211,37 @@
                 </div>
             </div>
             <div id="editorControls" style="display: none;" class="editor-controls">
-                <button onclick="formatText('bold')" class="editor-button"><strong>B</strong></button>
-                <button onclick="formatText('italic')" class="editor-button"><em>I</em></button>
-                <button onclick="formatText('underline')" class="editor-button"><u>U</u></button>
-                <button onclick="formatList('bullet')" class="editor-button">• List</button>
-                <button onclick="formatList('number')" class="editor-button">1. List</button>
-                <button onclick="toggleInfobox()" class="editor-button">Toggle Infobox</button>
+                <div class="editor-group">
+                    <button onclick="formatText('bold')" class="editor-button" title="Bold"><strong>B</strong></button>
+                    <button onclick="formatText('italic')" class="editor-button" title="Italic"><em>I</em></button>
+                    <button onclick="formatText('underline')" class="editor-button" title="Underline"><u>U</u></button>
+                    <button onclick="insertPageLink()" class="editor-button" title="Insert Page Link">🔗</button>
+                </div>
+                <!-- Page Link Dialog -->
+                <div id="linkDialog" class="link-dialog" style="display: none;">
+                    <div class="link-dialog-content">
+                        <h3>Insert Page Link</h3>
+                        <div class="link-search">
+                            <input type="text" id="linkSearch" class="medieval-input" placeholder="Search pages..." oninput="searchPages(this.value)">
+                            <div id="searchResults" class="search-results"></div>
+                        </div>
+                        <div class="link-dialog-buttons">
+                            <button onclick="closeDialog()" class="medieval-button">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="editor-group">
+                    <button onclick="formatList('bullet')" class="editor-button" title="Bullet List">• List</button>
+                    <button onclick="formatList('number')" class="editor-button" title="Numbered List">1. List</button>
+                </div>
+                <div class="editor-group">
+                    <button onclick="toggleInfobox()" class="editor-button" title="Toggle Infobox">Infobox</button>
+                    <button onclick="createInfobox()" class="editor-button" title="Create New Infobox">+ New Infobox</button>
+                </div>
+                <div class="editor-group">
+                    <button onclick="saveDraft()" class="editor-button" title="Save Draft">Save Draft</button>
+                    <button onclick="loadDraft()" class="editor-button" title="Load Draft">Load Draft</button>
+                </div>
             </div>
             <button onclick="toggleEdit()" class="medieval-button" id="editButton">Edit This Page</button>
             </div>
